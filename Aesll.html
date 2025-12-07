@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aesthetic Love Letter 💌</title>
+
+<!-- Google font for handwriting + nice sans -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg1: #fff5fb;
+    --bg2: #fff0f8;
+    --accent: #ff6fb5;
+    --accent-2: #c46aa3;
+    --paper: #fffefc;
+    --text: #4a2740;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(1200px 600px at 10% 10%, #fff8fb 0%, #fff1f7 20%, #fff2fb 40%),
+                linear-gradient(180deg, var(--bg1), var(--bg2));
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+  }
+
+  /* container / paper */
+  .wrapper{
+    width:900px;
+    max-width:96vw;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow: 0 20px 60px rgba(203,90,140,0.15);
+    position:relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,250,252,0.95));
+    padding:28px;
+  }
+
+  /* soft vignette + sparkles layer */
+  .vignette{
+    pointer-events:none;
+    position:absolute;
+    inset:0;
+    background: radial-gradient(60% 40% at 50% 20%, rgba(255,255,255,0.6), transparent 30%),
+                linear-gradient(180deg, rgba(255,255,255,0.2), transparent 40%);
+    mix-blend-mode: soft-light;
+  }
+
+  /* floating sparkles */
+  .sparkles{ position:absolute; inset:0; pointer-events:none; }
+  .sparkles i{
+    position:absolute;
+    font-size:12px;
+    opacity:0.12;
+    transform:translateY(0) rotate(0deg);
+    animation: sparkleUp linear infinite;
+    filter: drop-shadow(0 2px 6px rgba(196,90,140,0.08));
+  }
+  @keyframes sparkleUp{
+    from{ transform: translateY(40vh) scale(0.8) rotate(10deg); opacity:0.06; }
+    to{ transform: translateY(-10vh) scale(1.12) rotate(-8deg); opacity:0.22; }
+  }
+
+  /* header */
+  .head{
+    display:flex;
+    gap:16px;
+    align-items:center;
+    margin-bottom:18px;
+  }
+  .logo{
+    width:64px;height:64px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent), var(--accent-2));
+    display:flex;align-items:center;justify-content:center;color:white;font-size:28px;
+    box-shadow:0 8px 20px rgba(196,90,140,0.18);
+  }
+  .meta h1{ margin:0;font-family:"Great Vibes", cursive; font-size:34px; color:var(--accent-2); }
+  .meta p{ margin:0; margin-top:2px; font-size:13px; color:#7a4a6b; }
+
+  /* paper area (the letter) */
+  .paper{
+    margin-top:14px;
+    background: linear-gradient(180deg, var(--paper), #fffaf9);
+    border-radius:12px;
+    padding:28px;
+    min-height:360px;
+    box-shadow: inset 0 2px 12px rgba(0,0,0,0.02);
+    position:relative;
+    overflow:auto;
+  }
+
+  /* handwriting text */
+  .letter{
+    font-family: "Great Vibes", cursive;
+    font-size:26px;
+    line-height:1.6;
+    color:#4b2d45;
+    max-width:780px;
+    margin:0 auto;
+    white-space:pre-wrap;
+    word-break:break-word;
+    letter-spacing:0.3px;
+  }
+
+  /* typewriter cursor */
+  .cursor{
+    display:inline-block;
+    width:6px;
+    height:26px;
+    background:var(--accent-2);
+    margin-left:6px;
+    vertical-align:bottom;
+    animation: blink 1s steps(2) infinite;
+    border-radius:3px;
+    box-shadow: 0 0 8px rgba(196,90,140,0.25);
+  }
+  @keyframes blink{ 50%{ opacity:0 } }
+
+  /* controls */
+  .controls{
+    margin-top:14px;
+    display:flex;
+    gap:10px;
+    align-items:center;
+    justify-content:center;
+  }
+  .btn{
+    border:0;padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:600;
+    background: linear-gradient(180deg, #fff, #fff1f7);
+    box-shadow: 0 8px 18px rgba(200,80,130,0.06);
+    color:var(--accent-2);
+  }
+  .btn-primary{
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color:white;
+    box-shadow: 0 12px 22px rgba(196,90,140,0.2);
+  }
+  .btn-ghost{ background:transparent; color:#8a476f; border:1px solid rgba(138,71,111,0.06); }
+
+  /* small footer text */
+  .footer{
+    margin-top:16px;
+    text-align:center;
+    color:#7a4a6b;
+    font-size:13px;
+  }
+
+  /* responsive */
+  @media (max-width:640px){
+    .letter{ font-size:20px }
+    .head{ gap:10px }
+    .logo{ width:54px;height:54px;font-size:22px }
+  }
+
+  /* print styles (clean) */
+  @media print{
+    body{ background:white; padding:0 }
+    .wrapper{ box-shadow:none; border-radius:0; width:100%; }
+    .controls, .sparkles, .vignette, .head, .footer { display:none }
+    .paper{ box-shadow:none; padding:20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper" role="main" aria-label="Aesthetic love letter">
+  <div class="vignette"></div>
+  <div class="sparkles" aria-hidden="true"></div>
+
+  <div class="head">
+    <div class="logo">💌</div>
+    <div class="meta">
+      <h1>For You</h1>
+      <p class="sub">a little note — typed with love ✨</p>
+    </div>
+  </div>
+
+  <div class="paper" id="paper" tabindex="0" aria-label="Love letter">
+    <div class="letter" id="letter" aria-live="polite"></div>
+  </div>
+
+  <div class="controls" role="group" aria-label="Letter controls">
+    <button class="btn btn-primary" id="playBtn" title="Play / Pause music">Play Music</button>
+    <button class="btn btn-ghost" id="typeBtn" title="Type the letter">Type Letter</button>
+    <button class="btn" id="revealBtn" title="Reveal full letter">Reveal Full</button>
+    <button class="btn" id="printBtn" title="Print or Save as PDF">Print</button>
+  </div>
+
+  <div class="footer">Made with ❤ • Save it, print it, or send it to someone special.</div>
+</div>
+
+<!-- Hidden audio (user must press to enable playback on most browsers) -->
+<audio id="bgAudio" loop preload="none">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7d6b6e8920.mp3?filename=soft-piano-1118.mp3" type="audio/mpeg">
+  <!-- If you want offline use, replace src with your own file path -->
+</audio>
+
+<script>
+/* -------------------------
+   Sparkles generator
+--------------------------*/
+const sparkles = document.querySelector('.sparkles');
+for(let i=0;i<18;i++){
+  const s = document.createElement('i');
+  s.textContent = '✦';
+  s.style.left = (Math.random()*95) + 'vw';
+  s.style.top = (30 + Math.random()*60) + 'vh';
+  s.style.fontSize = (8 + Math.random()*20) + 'px';
+  s.style.animationDuration = (10 + Math.random()*14) + 's';
+  s.style.animationDelay = (-Math.random()*10) + 's';
+  s.style.opacity = (0.04 + Math.random()*0.18);
+  sparkles.appendChild(s);
+}
+
+/* -------------------------
+   Letter content (editable)
+--------------------------*/
+const fullLetter = `My Love,
+
+Kabhi kabhi lagta hai ki main jitna bhi likh loon, mere emotions shayad phir bhi kam hi pad jaayein.  
+Par phir bhi… bahot saree baatein hai jo ap deserve krte ho sunna.
+
+aap meri life ka woh hissa ho jisse milne ke baad sab kuch thoda soft, thoda peaceful, thoda better lagne laga.  
+apka support, apki baatein, apki presence — ye sab mere liye sach me bahot matter karti hai.
+
+Aap jab thak jaate ho, ya stress me hote ho, tab mann karta hai apke sare bojh ko apne kandhe par le lun apko gale lgalu
+Kyuki aap deserve karte ho sirf pyaar, care, aur ek comfort place… aur main hamesha chahungi ki apki life me wo place main banu.
+
+Aap bahot strong ho bahot honest, bahot pure aur bahot hardworking ho.  
+Aur mujhe aap par proud feel hota hai.
+
+mere liye aap humesha perfect ho, apki smile itni peaceful hai n ki mera pura din itna acha jata hai n .. i dont have words to explain you your purity sb kuch just majestic hai
+please kbhi mujhe chor kr nhi jana .i will always need you or haan 
+
+**Aap akele nahi ho. Kabhi nahi.**  
+Main hamesha yahi hoon… Apke saath… Apke liye.
+
+With all my love,  
+— Yours Ishita`;
+const letterEl = document.getElementById('letter');
+let idx = 0;
+let typing = false;
+let typeInterval = null;
+
+/* Typewriter function */
+function typeStep(){
+  if(idx >= fullLetter.length){
+    stopTyping();
+    return;
+  }
+  const ch = fullLetter[idx++];
+  // replace double newlines with paragraph spacing visually (preserve whitespace)
+  letterEl.textContent += ch;
+  // auto-scroll paper down as it types
+  const paper = document.getElementById('paper');
+  paper.scrollTop = paper.scrollHeight;
+}
+
+/* Start typing */
+function startTyping(){
+  if(typing) return;
+  typing = true;
+  typeInterval = setInterval(typeStep, 48); // speed
+  showCursor();
+}
+
+/* Stop typing */
+function stopTyping(){
+  typing = false;
+  clearInterval(typeInterval);
+  hideCursor();
+}
+
+/* Reveal full letter instantly */
+function revealFull(){
+  stopTyping();
+  letterEl.textContent = fullLetter;
+  idx = fullLetter.length;
+}
+
+/* Cursor management */
+let cursorElem = null;
+function showCursor(){
+  if(cursorElem) return;
+  cursorElem = document.createElement('span');
+  cursorElem.className = 'cursor';
+  letterEl.appendChild(cursorElem);
+}
+function hideCursor(){
+  if(!cursorElem) return;
+  cursorElem.remove();
+  cursorElem = null;
+}
+
+/* init */
+letterEl.textContent = ''; // start empty
+
+/* Buttons */
+document.getElementById('typeBtn').addEventListener('click', ()=>{
+  if(typing) stopTyping();
+  else startTyping();
+});
+document.getElementById('revealBtn').addEventListener('click', revealFull);
+document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+
+/* Allow clicking letter to toggle typing */
+document.getElementById('paper').addEventListener('click', ()=> {
+  if(typing) stopTyping(); else startTyping();
+});
+
+/* keyboard access */
+document.addEventListener('keydown', (e)=>{
+  if(e.key === ' '){ // space toggles typing
+    e.preventDefault();
+    if(typing) stopTyping(); else startTyping();
+  }
+  if(e.key === 'Enter'){ revealFull(); }
+  if(e.key === 'p' || (e.ctrlKey && e.key === 'p')){ /* let default print */ }
+});
+
+/* -------------------------
+   Music play/pause
+--------------------------*/
+const audio = document.getElementById('bgAudio');
+const playBtn = document.getElementById('playBtn');
+let audioPlaying = false;
+
+playBtn.addEventListener('click', async ()=>{
+  try{
+    if(!audioPlaying){
+      await audio.play();
+      audioPlaying = true;
+      playBtn.textContent = 'Pause Music';
+      playBtn.classList.add('btn-primary');
+    } else {
+      audio.pause();
+      audioPlaying = false;
+      playBtn.textContent = 'Play Music';
+      playBtn.classList.remove('btn-primary');
+    }
+  }catch(err){
+    // autoplay blocked or error
+    alert('Playback blocked by browser. Tap the button again or allow audio playback.');
+  }
+});
+
+/* When audio ends or is paused update UI */
+audio.addEventListener('pause', ()=> {
+  audioPlaying = false;
+  playBtn.textContent = 'Play Music';
+  playBtn.classList.remove('btn-primary');
+});
+audio.addEventListener('play', ()=> {
+  audioPlaying = true;
+  playBtn.textContent = 'Pause Music';
+  playBtn.classList.add('btn-primary');
+});
+
+/* Clicking reveal also focuses paper for screen readers */
+document.getElementById('revealBtn').addEventListener('click', ()=> {
+  document.getElementById('paper').focus();
+});
+
+/* Accessibility: provide reduced motion if user prefers */
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+if(prefersReduced && prefersReduced.matches){
+  // simplify animations
+  document.querySelectorAll('.sparkles i').forEach(s => {
+    s.style.animationDuration = '1s';
+    s.style.animationIterationCount = 1;
+    s.style.opacity = '0.06';
+  });
+  // disable auto typing motion speed
+  // (we keep typewriter but slower)
+}
+
+/* optional: let user edit letter text inline (double click) */
+document.getElementById('paper').addEventListener('dblclick', ()=> {
+  stopTyping();
+  const txt = prompt('Edit the letter text (you can paste your own):', fullLetter);
+  if(txt !== null){
+    // update content
+    window.fullLetterCustom = txt;
+    // set new fullLetter and reset
+    // NOTE: we intentionally don't clobber the original constant; use variable
+    // for new typing session
+    if(txt.trim() !== '') {
+      // override typed content
+      idx = 0;
+      letterEl.textContent = '';
+      // set new letter for typing
+      // store on element so other functions can access
+      window.fullLetterCurrent = txt;
+      // update local copy used by typeStep
+      // simplest approach: reassign fullLetter variable used by typeStep:
+      // but since fullLetter is const, use closure approach:
+      // We'll override typeStep to read from window.fullLetterCurrent
+      // Re-define typeStep:
+      clearInterval(typeInterval);
+      typing = false;
+      window.fullLetter = txt; // set a global for new text
+    }
+  }
+});
+
+/* ensure typeStep uses window.fullLetter if overridden */
+(function ensureGlobalLetter(){
+  if(typeof window.fullLetter !== 'string') window.fullLetter = fullLetter;
+  // Replace typeStep to use dynamic window.fullLetter
+  window.typeStep = function(){
+    if(idx >= window.fullLetter.length){
+      stopTyping();
+      return;
+    }
+    const ch = window.fullLetter[idx++];
+    letterEl.textContent += ch;
+    const paper = document.getElementById('paper');
+    paper.scrollTop = paper.scrollHeight;
+  };
+  // make startTyping call the global typeStep
+  window.startTyping = function(){
+    if(typing) return;
+    typing = true;
+    typeInterval = setInterval(window.typeStep, 48);
+    showCursor();
+  };
+  window.stopTyping = function(){
+    typing = false;
+    clearInterval(typeInterval);
+    hideCursor();
+  };
+})();
+
+</script>
+</body>
+</html>
